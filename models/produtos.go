@@ -1,7 +1,8 @@
 package models
 
 import (
-	"github.com/Jennyads/db"
+	// "github.com/seu-usuario/crud_product_go/db"
+	"github.com/seu-usuario/crud_product_go/db"
 )
 
 type Produto struct {

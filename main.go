@@ -1,12 +1,12 @@
 package main
 
 import (
-	_ "github.com/lib/pq"
 	"html/template"
 	"net/http"
+
+	_ "github.com/lib/pq"
+	"github.com/seu-usuario/crud_product_go/models"
 )
-
-
 
 
 
@@ -18,10 +18,9 @@ func main() {
 }
 
 func index(w http.ResponseWriter, r *http.Request) {
-	
+	todosOsProdutos := models.BuscaTodosOsProdutos
 
-	temp.ExecuteTemplate(w, "Index", produtos)
-	defer db.Close()
+	temp.ExecuteTemplate(w, "Index", todosOsProdutos)
 
 }
 
