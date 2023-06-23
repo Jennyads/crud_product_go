@@ -1,7 +1,9 @@
 package controllers
 
 import (
+	"log"
 	"net/http"
+	"strconv"
 	"text/template"
 
 	"github.com/seu-usuario/crud_product_go/models"
@@ -10,8 +12,7 @@ import (
 var temp = template.Must(template.ParseGlob("templates/*.html"))
 
 func Index(w http.ResponseWriter, r *http.Request) {
-	todosOsProdutos := models.BuscaTodosOsProdutos
-
+	todosOsProdutos := models.BuscaTodosOsProdutos()
 	temp.ExecuteTemplate(w, "Index", todosOsProdutos)
 
 }
@@ -32,7 +33,7 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 			log.Println("Erro na conversão do preço:", err)
 		}
 
-		quantidadeConvertidaParaInt, err := strconv.Atoi(preco)
+		quantidadeConvertidaParaInt, err := strconv.Atoi(quantidade)
 		if err != nil {
 			log.Println("Erro na conversão da quantidade:", err)
 		}
